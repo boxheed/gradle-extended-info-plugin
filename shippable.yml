@@ -24,7 +24,7 @@ before_script:
 script:
   - printenv | grep SHIPPABLE
   - chmod +x gradlew
-  - ./gradlew clean currentVersion build
+  - ./gradlew clean currentVersion build -i
   
 after_script:
   - cp -R ./build/test-results/* ./shippable/testresults
