@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'cobertura'
 apply plugin: 'pl.allegro.tech.build.axion-release'
-
+apply plugin: 'com.fizzpod.info-init'
 apply from: 'buildSrc/build.gradle'
 
 repositories {
