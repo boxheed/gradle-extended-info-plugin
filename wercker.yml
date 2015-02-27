@@ -6,6 +6,7 @@ build:
     - script:
         name: show base information
         code: |
+		  chmod +x gradlew
           ./gradlew -v
           printenv
     # A step that executes `gradle build` command
