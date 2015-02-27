@@ -13,4 +13,4 @@ build:
     - script:
         name: run gradle
         code: |
-          ./gradlew build
+          ./gradlew build -i
