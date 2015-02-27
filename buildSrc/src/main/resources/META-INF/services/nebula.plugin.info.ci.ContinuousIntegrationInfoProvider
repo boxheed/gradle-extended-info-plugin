@@ -1,3 +1,4 @@
 nebula.plugin.info.ci.JenkinsProvider
 com.fizzpod.gradle.plugins.info.ci.DroneIoProvider
 com.fizzpod.gradle.plugins.info.ci.ShippableProvider
+com.fizzpod.gradle.plugins.info.ci.WerckerProvider
