@@ -8,7 +8,7 @@ build:
         code: |
 		  chmod +x gradlew
           ./gradlew -v
-          printenv
+          #printenv
     # A step that executes `gradle build` command
     - script:
         name: run gradle
