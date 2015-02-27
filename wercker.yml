@@ -1,4 +1,4 @@
-box: wercker/android
+box: mies/java7-oracle@0.0.1
 # Build definition
 build:
   # The steps that will be executed on build
@@ -6,10 +6,10 @@ build:
     - script:
         name: show base information
         code: |
-          gradle -v
+          ./gradlew -v
           printenv
     # A step that executes `gradle build` command
     - script:
         name: run gradle
         code: |
-          gradle --full-stacktrace -q --project-cache-dir=$WERCKER_CACHE_DIR build
+          ./gradlew build
