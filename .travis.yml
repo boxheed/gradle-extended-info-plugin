@@ -2,7 +2,6 @@ language: java
 jdk:
   - oraclejdk7
 
-script:
+before_script:
   - printenv
   - chmod +x gradlew
-  - ./gradlew build
