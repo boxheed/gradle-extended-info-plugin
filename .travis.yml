@@ -4,4 +4,4 @@ jdk:
 
 before_install:
   - chmod +x gradlew
-  - printenv
+  - printenv | grep TRAVIS
