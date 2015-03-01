@@ -4,5 +4,3 @@ jdk:
 
 before_install:
   - chmod +x gradlew
-  - printenv | grep TRAVIS
-  - printenv | grep http
