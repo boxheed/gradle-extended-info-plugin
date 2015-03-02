@@ -5,9 +5,11 @@ A plugin extending the capability of the Nebula [gradle-info-plugin](https://git
 ```
 buildscript {
     repositories { jcenter() }
-    dependencies { classpath 'com.fizzpod.gradle-extended-info-plugin:0.1.0' }
+    dependencies { classpath 'com.fizzpod.gradle-extended-info-plugin:0.1.+' }
 }
 ```
+
+This plugin uses version 2.2.0 of the gradle-info-plugin.
 
 # Extended Capabilities
 ## Extended info-ci plugin
