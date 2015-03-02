@@ -16,13 +16,14 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		then:
 		def providers = resolver.all()
 		providers != null
-		providers.size() == 6
-		providers[0].getClass().equals(JenkinsProvider.class)
-		providers[1].getClass().equals(DroneIoProvider.class)
-		providers[2].getClass().equals(ShippableProvider.class)
-		providers[3].getClass().equals(WerckerProvider.class)
-		providers[4].getClass().equals(TravisProvider.class)
-		providers[5].getClass().equals(UnknownContinuousIntegrationProvider.class)
+		providers.size() == 7
+		providers[0].getClass().equals(ServiceLoadedContinuousIntegrationInfoProvider.class)
+		providers[1].getClass().equals(JenkinsProvider.class)
+		providers[2].getClass().equals(DroneIoProvider.class)
+		providers[3].getClass().equals(ShippableProvider.class)
+		providers[4].getClass().equals(WerckerProvider.class)
+		providers[5].getClass().equals(TravisProvider.class)
+		providers[6].getClass().equals(UnknownContinuousIntegrationProvider.class)
 	}
 
 	def 'get Jenkins provider if running on Jenkins'() {
@@ -39,7 +40,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		if(onJenkins) {
 			provider.getClass().equals(JenkinsProvider.class)
 		} else if(onDrone) {
-			provider.getClass().equals(DroneIoProvider.class)
+			provider.getClass().equals(ServiceLoadedContinuousIntegrationInfoProvider.class)
 		} else if(onShippable) {
 			provider.getClass().equals(ShippableProvider.class)
 		} else if(onWercker) {
