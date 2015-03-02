@@ -1,6 +1,6 @@
 
 
-# Gradle Extended Info PLugin
+# Gradle Extended Info Plugin
 A plugin extending the capability of the Nebula [gradle-info-plugin](https://github.com/nebula-plugins/gradle-info-plugin "nebula gradle-info-plugin").
 ```
 buildscript {
