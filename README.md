@@ -19,6 +19,7 @@ The Nebula gradle-info-plugin provides ci-info only for [Jenkins](http://jenkins
 - [Shippable](https://www.shippable.com/) [![Build Status](https://api.shippable.com/projects/54f037b55ab6cc13528f0e61/badge?branchName=master)](https://app.shippable.com/projects/54f037b55ab6cc13528f0e61/builds/latest)
 - [Wercker](http://wercker.com/)
 - [Travis-CI](https://travis-ci.org/) [![Build Status](https://travis-ci.org/boxheed/gradle-extended-info-plugin.svg?branch=master)](https://travis-ci.org/boxheed/gradle-extended-info-plugin)
+- [Snap-CI](https://snap-ci.org/) [![Build Status](https://snap-ci.com/boxheed/gradle-extended-info-plugin/branch/master/build_image)](https://snap-ci.com/boxheed/gradle-extended-info-plugin/branch/master)
 
 ### Usage
 `apply plugin 'com.fizzpod.info-ci'`
