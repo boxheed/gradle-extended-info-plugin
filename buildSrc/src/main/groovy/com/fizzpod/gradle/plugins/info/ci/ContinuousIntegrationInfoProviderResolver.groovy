@@ -12,6 +12,7 @@ public class ContinuousIntegrationInfoProviderResolver {
 		new ShippableProvider(),
 		new WerckerProvider(),
 		new TravisProvider(),
+		new SnapProvider(),
 		new UnknownContinuousIntegrationProvider()
 	]
 
