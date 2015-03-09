@@ -8,7 +8,7 @@ class WerckerProvider extends AbstractContinuousIntegrationProvider {
 	
 	@Override
 	boolean supports(Project project) {
-		getEnvironmentVariable('WERCKER_ROOT')
+		getEnvironmentVariable('WERCKER_ROOT')  != null
 	}
 
 	@Override
