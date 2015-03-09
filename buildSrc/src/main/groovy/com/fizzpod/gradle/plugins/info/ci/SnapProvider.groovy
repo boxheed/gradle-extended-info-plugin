@@ -10,7 +10,7 @@ class SnapProvider extends AbstractContinuousIntegrationProvider {
 	
 	@Override
 	boolean supports(Project project) {
-		getEnvironmentVariable('SNAP_CI')
+		getEnvironmentVariable('SNAP_CI')  != null
 	}
 
 	@Override

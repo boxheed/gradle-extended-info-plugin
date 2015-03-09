@@ -10,7 +10,7 @@ class TravisProvider extends AbstractContinuousIntegrationProvider {
 	
 	@Override
 	boolean supports(Project project) {
-		getEnvironmentVariable('TRAVIS')
+		getEnvironmentVariable('TRAVIS')  != null
 	}
 
 	@Override

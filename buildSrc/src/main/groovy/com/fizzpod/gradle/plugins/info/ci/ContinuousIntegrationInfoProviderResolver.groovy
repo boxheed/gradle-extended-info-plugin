@@ -25,7 +25,7 @@ public class ContinuousIntegrationInfoProviderResolver {
 			
 	ContinuousIntegrationInfoProvider findProvider(project) {
 
-		def provider = continuousIntegrationInfoProviderServiceLoader.find { it.supports(project) }
+		def provider = this.all().find { it.supports(project) }
        
         if (provider) {
             return provider
