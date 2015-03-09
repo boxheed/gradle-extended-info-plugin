@@ -34,11 +34,11 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 	def 'get Jenkins provider if running on Jenkins'() {
 		when:
 		def onJenkins = System.getenv('BUILD_NUMBER') && System.getenv('JOB_NAME')
-		def onDrone = System.getenv('DRONE')
-		def onShippable = System.getenv('SHIPPABLE')
-		def onWercker = System.getenv('WERCKER_ROOT')
-		def onTravis = System.getenv('TRAVIS')
-		def onSnap = System.getenv('SNAP_CI')
+		def onDrone = System.getenv('DRONE') != null
+		def onShippable = System.getenv('SHIPPABLE') != null
+		def onWercker = System.getenv('WERCKER_ROOT') != null
+		def onTravis = System.getenv('TRAVIS') != null
+		def onSnap = System.getenv('SNAP_CI') != null
 		def resolver = new ContinuousIntegrationInfoProviderResolver()
 
 		then:
