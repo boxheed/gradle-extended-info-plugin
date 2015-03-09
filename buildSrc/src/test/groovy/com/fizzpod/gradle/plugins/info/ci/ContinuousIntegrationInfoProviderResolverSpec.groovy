@@ -4,10 +4,14 @@ package com.fizzpod.gradle.plugins.info.ci
 import nebula.plugin.info.ci.JenkinsProvider
 import nebula.plugin.info.ci.UnknownContinuousIntegrationProvider
 import nebula.test.ProjectSpec;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fizzpod.gradle.plugins.info.ci.ContinuousIntegrationInfoProviderResolver
 
 class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(ContinuousIntegrationInfoProviderResolverSpec.class);
 
 	def 'get all configured info providers'() {
 		when:
@@ -39,6 +43,9 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 
 		then:
 		def provider = resolver.findProvider(project)
+		
+		LOGGER.info("Test resolved provider to: {}" provider);
+		
 		if(onJenkins) {
 			provider.getClass().equals(JenkinsProvider.class)
 		} else if(onDrone) {
