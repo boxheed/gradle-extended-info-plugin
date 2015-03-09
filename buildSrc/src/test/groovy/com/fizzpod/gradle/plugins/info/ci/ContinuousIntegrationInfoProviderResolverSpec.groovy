@@ -31,7 +31,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		providers[7].getClass().equals(UnknownContinuousIntegrationProvider.class)
 	}
 
-	def 'get Jenkins provider if running on Jenkins'() {
+	def 'Get provider for this CI server'() {
 		when:
 		def onJenkins = System.getenv('BUILD_NUMBER') && System.getenv('JOB_NAME')
 		def onDrone = System.getenv('DRONE') != null
@@ -43,8 +43,6 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 
 		then:
 		def provider = resolver.findProvider(project)
-		
-		LOGGER.info("Test resolved provider to: {}", provider);
 		
 		if(onJenkins) {
 			provider.getClass().equals(JenkinsProvider.class)

@@ -8,7 +8,7 @@ class DroneIoProvider extends AbstractContinuousIntegrationProvider {
 	
 	@Override
 	boolean supports(Project project) {
-		getEnvironmentVariable('DRONE')
+		getEnvironmentVariable('DRONE') != null
 	}
 
 	@Override
