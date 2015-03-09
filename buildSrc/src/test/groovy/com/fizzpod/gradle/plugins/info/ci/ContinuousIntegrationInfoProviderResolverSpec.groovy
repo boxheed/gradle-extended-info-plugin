@@ -44,7 +44,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		then:
 		def provider = resolver.findProvider(project)
 		
-		LOGGER.info("Test resolved provider to: {}" provider);
+		LOGGER.info("Test resolved provider to: {}", provider);
 		
 		if(onJenkins) {
 			provider.getClass().equals(JenkinsProvider.class)
