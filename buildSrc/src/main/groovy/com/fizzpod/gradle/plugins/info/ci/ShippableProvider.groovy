@@ -8,7 +8,7 @@ class ShippableProvider extends AbstractContinuousIntegrationProvider {
 	
 	@Override
 	boolean supports(Project project) {
-		getEnvironmentVariable('SHIPPABLE')
+		getEnvironmentVariable('SHIPPABLE') != null
 	}
 
 	@Override
