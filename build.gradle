@@ -4,7 +4,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-        classpath 'pl.allegro.tech.build:axion-release-plugin:1.1.0'
+        classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.1'
 		classpath 'net.saliman:gradle-cobertura-plugin:2.2.4'
     }
 }
