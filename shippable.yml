@@ -21,9 +21,6 @@ before_script:
   - mkdir -p shippable/codecoverage
   - mkdir -p shippable/artifacts
   - git remote set-url origin git@github.com:boxheed/gradle-extended-info-plugin.git
-#  - mkdir ~/.gradle
-#  - echo $GRADLE_PUBLISH_KEY >> ~/.gradle/gradle.properties
-#  - cat ~/.gradle/gradle.properties
   
 script:
   - ./gradlew clean build; if [ "$HEAD_BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins; fi
@@ -38,4 +35,3 @@ archive: true
 #environment
 env:
   global:
-	- secure: ac3ffLehZGk9dgKsye7zVyC1q5SiaNAflDuW/GfwTg3I2d4CJA9QkzT8yGj0Ws43tJkMLwtbPGjGwEq2oXt+ReWI903i78QZWeA/+rAl++JNhU0vZ98kdTe85ZDLfTt2qR0+mHAC5ld6KL6eM02KOGxsaBbov0TyK33WO20HaL7hDS9yIC+eM3VQczitu4Sy4E8U69TJ9lrHB1gDED9AjLYFwoOB/xMKtrIZpIFcaxuVNaBY8SpKlXyrk3lNOzxj75H9zBgg8ZMS2+U03/HCi7GOhsSCIOoznsR8oq/UMMIM5buyE3uhrWfBbHbZSJu3glUHI5xECtqjyoqaavtXjA==
