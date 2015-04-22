@@ -21,9 +21,12 @@ before_script:
   - mkdir -p shippable/codecoverage
   - mkdir -p shippable/artifacts
   - git remote set-url origin git@github.com:boxheed/gradle-extended-info-plugin.git
+  - mkdir ~/.gradle
+  - echo $GRADLE_PUBLISH_KEY >> ~/.gradle/gradle.properties
+  - cat ~/.gradle/gradle.properties
   
 script:
-  - ./gradlew clean build; if [ "$HEAD_BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; fi
+  - ./gradlew clean build; if [ "$HEAD_BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins; fi
    
 after_script:
   - cp -R ./build/test-results/* ./shippable/testresults
@@ -36,3 +39,4 @@ archive: true
 env:
   global:
     - secure: bvTegN/hfD3iXkXWSJ5nLepEqrZ7ISy0vdjtIAdmoVB5ctlIk0c/WgqMTACyU53+BBIYvC6luh8E2uo985/0pV2/SdYFFygKNHXDYEcJNG+n4MPGb9tLDPl+MiNn7ZJxxs/QGG+9qpY1VspIOAMKF+GVw6Yy0yVY/1AQYnYwz0mDJ52UbaaVZVV1hr5zAObH7mSKUWzYu7iOd0PNy0wBv6hsr8D6BbBJ/PoRB0IRCZiiqaris5V6B9jnoIi23S4xSVZNmRjMP39hh4DGkgLozJbhGAzP7tRqiKD4QJ14Ns6OO1oYKkL2Ptj32Je4YTPr7oBzQ9eWSNDOikjSs5moVw==
+	- secure: ac3ffLehZGk9dgKsye7zVyC1q5SiaNAflDuW/GfwTg3I2d4CJA9QkzT8yGj0Ws43tJkMLwtbPGjGwEq2oXt+ReWI903i78QZWeA/+rAl++JNhU0vZ98kdTe85ZDLfTt2qR0+mHAC5ld6KL6eM02KOGxsaBbov0TyK33WO20HaL7hDS9yIC+eM3VQczitu4Sy4E8U69TJ9lrHB1gDED9AjLYFwoOB/xMKtrIZpIFcaxuVNaBY8SpKlXyrk3lNOzxj75H9zBgg8ZMS2+U03/HCi7GOhsSCIOoznsR8oq/UMMIM5buyE3uhrWfBbHbZSJu3glUHI5xECtqjyoqaavtXjA==
