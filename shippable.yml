@@ -21,7 +21,7 @@ before_script:
   - mkdir -p shippable/codecoverage
   - mkdir -p shippable/artifacts
   - git remote set-url origin git@github.com:boxheed/gradle-extended-info-plugin.git
-  - echo $GRADLE_PUBLISH_KEY >> ~/gradle.properties
+  - echo $GRADLE_PUBLISH_KEY
   
 script:
   - ./gradlew clean build; if [ "$HEAD_BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins; fi
