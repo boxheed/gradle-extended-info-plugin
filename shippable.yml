@@ -35,3 +35,4 @@ archive: true
 #environment
 env:
   global:
+    - secure: AnAIwoi75EBG59C/u9vDdyhNT7NV1YgWPGPYZl/K3TIxARa3S8jdSpkSaiEeweBL76kkNV8/s+uau5Q/VN5j3fhL7T3npI5m/Ysh9H5XuUZlKkSd0Lic3fYXF14HEroCLh6JTdprbNO3nAEivN81FF4IReQXGbOEaGpAnTdMYFh97gVLE3A7GPxEXuX5OICTPTkXKmNSjN1539hrTFKt+5LdaumXgVZtuT9Et0WuTLxMcyFqsXQR20LYSeWZp9aH23yoc08AQIlpfdkJcLKrmQgTLVatHkIAxjVelhR46/mSOegovGx7cP+qfPdVGgqqk/OSRCb+kYqMgubcwc0TZw==
