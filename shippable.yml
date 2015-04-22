@@ -24,7 +24,6 @@ before_script:
   - mkdir $HOME/.gradle
   - printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> $HOME/.gradle/gradle.properties
   - cat $HOME/.gradle/gradle.properties;
-  - ls -al $HOME
   
 script:
   - ./gradlew clean build; if [ "$HEAD_BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins; fi
