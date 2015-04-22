@@ -23,7 +23,6 @@ before_script:
   - git remote set-url origin git@github.com:boxheed/gradle-extended-info-plugin.git
   - mkdir $HOME/.gradle
   - printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> $HOME/.gradle/gradle.properties
-  - cat $HOME/.gradle/gradle.properties;
   
 script:
   - ./gradlew clean build; if [ "$HEAD_BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; git push --tags; ./gradlew clean build publishPlugins; fi
@@ -38,4 +37,4 @@ archive: true
 #environment
 env:
   global:
-    - secure: NCmHo9P+mWrD5+/69H0zuFndXBY2MPI7I1WftZXpdNiOmGrPlmGlc4yaXT3uJQwsSSK42rucvhGNTurCBtpR4FzqPuEeyFGUfQL/PLzt4ZlHzUzNHVU4yzZmp6F1Aum4LyY7LyYs6jJ5Z9Qn4mimxXN4VLLWdS90Rr9bwivjvgu6RQlBpcPGZdRjqL8/y/2XwSpCC4dMtseTfR/UhwCYEna94tjcxCoTiQ2THyfl94I3YFIfr1O3hhOXDeYxL0CctRX/wTYV3kitsQWXWc8G0EERq9rS3RF+v3VTVdeVAb4bPJXRwFzacnMjE/uvSl69W+xeAjhB+q1OsiBhdoeYag==
+    - secure: CCh7ONXbCtqntZ7QgM2qh9vF9EO7rzOu2YNMgIcZz3fvqXa/rs1icYa90ZrUCRf6fOR5ZWUuxUdr9dmB1fn7InecIHj+F7dopkcvQtnya4dUtLXKwtNGNuEvJykjI0sx5538EIDxVqAyH9EPnQRUyHDbUzLziCxjizf1fVC5KWsqrmYfzsd8khaLnGmZyTWpgFCW26QPdrHm+ohauHGeD2WPIYTDCWHotc53fpe7e4CJv8cIscHdQThUiJ094cjoM324o+dZ/x5iWK1C0z0CzB3Bl7O+Wvz+JfiPTLKhSMEnM1wVbUYo0SwVKloMA7DyzsL6pNQ8tOHlQEPL2jCBgrLJH/tKX/ojzdVsyAfqTawzA9bn0ZnrCcZNb2evMcBglHEkvTQJmMPn/E2teB/Z/Gi/z0WiRtFOeyPMR3jV74TeD4qZC76RX6IVJ8G4hBQ3JRMkoEhMTZVXjNx7kutLaD9gH+M6Xh4bXrPJ/DnjtXwOTx7dQctv1bfVypVpmc+wEbQGktE6HSUrCesUl4EHmLpjHozbuZwNLM9mQEk8cTBFIHFsoH8N9+5G4lqafLxyLqxpJ1Xs9Wa9Tdv5ef8qBB80MtPOHzrsxyb/q+GCtYVisL2JyV18Iccpdub7xqT8KNwcZ8QOJUHWFAk2c8n5x+tE8n1tZEe4Fc86ng+/Bko=
