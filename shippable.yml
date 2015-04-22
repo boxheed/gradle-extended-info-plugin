@@ -21,7 +21,7 @@ before_script:
   - mkdir -p shippable/codecoverage
   - mkdir -p shippable/artifacts
   - git remote set-url origin git@github.com:boxheed/gradle-extended-info-plugin.git
-  - mkdir ~/.gradle
+#  - mkdir ~/.gradle
 #  - echo $GRADLE_PUBLISH_KEY >> ~/.gradle/gradle.properties
 #  - cat ~/.gradle/gradle.properties
   
