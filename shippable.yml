@@ -22,7 +22,7 @@ before_script:
   - mkdir -p shippable/artifacts
   - git remote set-url origin git@github.com:boxheed/gradle-extended-info-plugin.git
   - mkdir $HOME/.gradle
-  - printenv | grep GRADLE_PROP
+  - printenv | grep GRADLE_PROP | cut -d'=' -f 2-
 #  - echo $GRADLE_PROP_1 >> $HOME/.gradle/gradle.properties; cat $HOME/.gradle/gradle.properties;
   - ls -al $HOME
   
