@@ -2,10 +2,14 @@ buildscript {
 	repositories {
 		mavenLocal()
 		jcenter()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
 	}
 	dependencies {
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.1'
 		classpath 'net.saliman:gradle-cobertura-plugin:2.2.4'
+		classpath "com.gradle.publish:plugin-publish-plugin:0.9.0"
     }
 }
 
@@ -16,6 +20,7 @@ apply plugin: 'maven'
 apply plugin: 'cobertura'
 apply plugin: 'pl.allegro.tech.build.axion-release'
 apply plugin: 'com.fizzpod.info'
+apply plugin: 'com.gradle.plugin-publish'
 apply from: 'buildSrc/build.gradle'
 
 repositories {
@@ -77,4 +82,20 @@ cobertura {
 }
 
 test.finalizedBy(project.tasks.cobertura)
+
+pluginBundle {
+  website = 'https://github.com/boxheed/gradle-extended-info-plugin'
+  vcsUrl = 'https://github.com/boxheed/gradle-extended-info-plugin'
+
+  description = 'Gradle plugin extending the nebula-info-plugin providing extension points and support for other CI servers.'
+  tags = ['gradle', 'plugin', 'ci', 'info', 'build']
+
+  plugins {
+
+    plugin {
+      id = 'com.fizzpod.info'
+      displayName = 'Gradle Parent Build Plugin'
+    }
+  }
+}
 
