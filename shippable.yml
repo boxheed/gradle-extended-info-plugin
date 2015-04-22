@@ -22,7 +22,8 @@ before_script:
   - mkdir -p shippable/artifacts
   - git remote set-url origin git@github.com:boxheed/gradle-extended-info-plugin.git
   - mkdir $HOME/.gradle
-  - echo "gradle.publish.key=$GRADLE_PUBLISH_KEY" >> $HOME/.gradle/gradle.properties; cat $HOME/.gradle/gradle.properties;
+  - printenv | grep GRADLE_PROP
+#  - echo $GRADLE_PROP_1 >> $HOME/.gradle/gradle.properties; cat $HOME/.gradle/gradle.properties;
   - ls -al $HOME
   
 script:
@@ -38,4 +39,4 @@ archive: true
 #environment
 env:
   global:
-    - secure: AnAIwoi75EBG59C/u9vDdyhNT7NV1YgWPGPYZl/K3TIxARa3S8jdSpkSaiEeweBL76kkNV8/s+uau5Q/VN5j3fhL7T3npI5m/Ysh9H5XuUZlKkSd0Lic3fYXF14HEroCLh6JTdprbNO3nAEivN81FF4IReQXGbOEaGpAnTdMYFh97gVLE3A7GPxEXuX5OICTPTkXKmNSjN1539hrTFKt+5LdaumXgVZtuT9Et0WuTLxMcyFqsXQR20LYSeWZp9aH23yoc08AQIlpfdkJcLKrmQgTLVatHkIAxjVelhR46/mSOegovGx7cP+qfPdVGgqqk/OSRCb+kYqMgubcwc0TZw==
+    - secure: uXThqX48wT2QHKpxUx3sr6aZB7hoWUGK5R5m/+03cshJGkYEId/1Zwo/3sTnJ3+PfNsfEQgRJWvdilJWQ0o54fnKztqEBpe8x9yQDxrsXg+DFAv9YfiKFZN/TCnVmeaRO3uZTf7JeuZi8Q9e6bPrLQKxs5qrjuk4BdtxQ6JBonmnSAwWqp1txpe+FSfstOIyYX1je+exAV/sEgSs+Dfzb/BlqPKkv2Dg7ZnOTMjyA/MD0fOq6vgc3aDRo48qmVdVutt+3LzFQWwohOfXipouY/8iLhUDSPixarQjZj+SbfvMdbggTc0os3EC6ids6vKC4d6EutseBsgQBs3PsvsCuQ==
