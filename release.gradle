@@ -31,7 +31,7 @@ pluginBundle {
 
     plugin {
       id = 'com.fizzpod.info'
-      displayName = 'Gradle Parent Build Plugin'
+      displayName = 'Gradle Extended Info Plugin'
     }
   }
 }
