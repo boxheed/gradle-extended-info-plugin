@@ -4,9 +4,9 @@ repositories {
 
 dependencies {
 
-	compile 'com.netflix.nebula:gradle-info-plugin:2.2.0'
+	compile 'com.netflix.nebula:gradle-info-plugin:2.2.1'
 	
-	testCompile('com.netflix.nebula:nebula-test:2.2.+') {
+	testCompile('com.netflix.nebula:nebula-test:2.2.1') {
         exclude group: 'org.codehaus.groovy'
     }
 }
