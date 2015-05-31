@@ -43,6 +43,8 @@ Like the Nebula gradle-info-plugin this plugin provides an uber plugin that appl
 `apply plugin 'com.fizzpod.info`
 
 ## Release Notes
+### 1.0.2
+* Updated version of gradle-info-plugin to 2.2.2
 ### 1.0.1 
 * Updated version of gradle-info-plugin to 2.2.1
 ### 1.0.0
