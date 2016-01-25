@@ -3,39 +3,21 @@ buildscript {
 		mavenLocal()
 		jcenter()
 		maven {
-			url "https://plugins.gradle.org/m2/"
+      url "https://plugins.gradle.org/m2/"
+    }
+		maven {
+			url "https://dl.bintray.com/boxhead/maven/"
 		}
 	}
 	dependencies {
-        classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.1'
-		classpath 'net.saliman:gradle-cobertura-plugin:2.2.4'
-		classpath "com.gradle.publish:plugin-publish-plugin:0.9.0"
-    }
+		classpath ('com.fizzpod:gradle-plugin-opinion:2.0.1') {
+			exclude group: 'com.fizzpod', module: 'gradle-extended-info-plugin'
+		}
+	}
 }
 
-apply plugin: 'groovy'
-apply plugin: 'java-gradle-plugin'
-apply plugin: 'eclipse'
-apply plugin: 'maven'
-apply plugin: 'cobertura'
-apply plugin: 'pl.allegro.tech.build.axion-release'
-apply plugin: 'com.fizzpod.info'
+apply plugin: 'com.fizzpod.pater-build'
 apply from: 'buildSrc/build.gradle'
-
-repositories {
-	mavenLocal()
-	jcenter()
-}
-
-
-scmVersion {
-    tag {
-        prefix = 'release'
-    }
-}
-
-group = 'com.fizzpod'
-version = scmVersion.version
 
 sourceSets {
     main {
@@ -62,23 +44,29 @@ sourceSets {
 	}
 }
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-
 dependencies {
 	compile gradleApi()
 	compile localGroovy()
 }
 
-artifacts {
-	jar
+bintray {
+	dryRun = false
+	publish = true
+	pkg {
+		labels = ['gradle', 'plugin', 'ci', 'info', 'build']
+	}
 }
 
-cobertura {
-    coverageFormats = ['html', 'xml']				
-    coverageIgnoreTrivial = true					
-    coverageIgnores = ['org.slf4j.Logger.*']			
-    coverageReportDir = new File("$buildDir/reports/cobertura")	
-}
+pluginBundle {
 
-test.finalizedBy(project.tasks.cobertura)
+	description = 'Gradle plugin extending the nebula-info-plugin providing extension points and support for other CI servers.'
+	tags = ['gradle', 'plugin', 'ci', 'info', 'build']
+
+  plugins {
+
+		plugin {
+		id = 'com.fizzpod.info'
+		displayName = 'Gradle Extended Info Plugin'
+    }
+  }
+}
