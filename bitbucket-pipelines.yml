@@ -4,6 +4,5 @@ pipelines:
   default:
     - step:
         script: # Modify the commands below to build your repository.
-          - printenv
           - ./gradlew build
           - cat ./build/manifest/gradle-extended-info-plugin.properties
