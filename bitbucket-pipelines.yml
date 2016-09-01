@@ -6,3 +6,4 @@ pipelines:
         script: # Modify the commands below to build your repository.
           - printenv
           - ./gradlew build
+          - printenv
