@@ -28,7 +28,9 @@ class BitBucketProvider extends AbstractContinuousIntegrationProvider {
 
 	@Override
 	String calculateJob(Project project) {
-		getEnvironmentVariable('BITBUCKET_COMMIT')
+		getEnvironmentVariable('BITBUCKET_REPO_SLUG') + ":" + 
+			getEnvironmentVariable('BITBUCKET_BRANCH') + ":" +
+			getEnvironmentVariable('BITBUCKET_COMMIT')
 	}
 
 	private String getEnvironmentVariable(String envKey) {
