@@ -25,8 +25,8 @@ class BitBucketProvider extends AbstractContinuousIntegrationProvider {
 
 	@Override
 	String calculateHost(Project project) {
-		BITBUCKET_URL + getEnvironmentVariable('BITBUCKET_REPO_OWNER')
-			+ "/" + getEnvironmentVariable('BITBUCKET_REPO_SLUG')
+		BITBUCKET_URL + getEnvironmentVariable('BITBUCKET_REPO_OWNER') +
+			"/" + getEnvironmentVariable('BITBUCKET_REPO_SLUG')
 	}
 
 	@Override
