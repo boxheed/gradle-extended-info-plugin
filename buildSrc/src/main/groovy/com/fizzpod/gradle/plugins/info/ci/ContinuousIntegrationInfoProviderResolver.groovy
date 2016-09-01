@@ -13,6 +13,7 @@ public class ContinuousIntegrationInfoProviderResolver {
 		new WerckerProvider(),
 		new TravisProvider(),
 		new SnapProvider(),
+		new BitBucketProvider(),
 		new UnknownContinuousIntegrationProvider()
 	]
 
