@@ -1,0 +1,8 @@
+image: java:8
+
+pipelines:
+  default:
+    - step:
+        script: # Modify the commands below to build your repository.
+          - ./gradlew build
+          - cat ./build/manifest/gradle-extended-info-plugin.properties
