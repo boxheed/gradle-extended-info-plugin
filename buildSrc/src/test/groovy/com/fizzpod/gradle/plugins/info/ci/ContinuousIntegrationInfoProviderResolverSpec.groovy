@@ -20,7 +20,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		then:
 		def providers = resolver.all()
 		providers != null
-		providers.size() == 8
+		providers.size() == 9
 		providers[0].getClass().equals(ServiceLoadedContinuousIntegrationInfoProvider.class)
 		providers[1].getClass().equals(JenkinsProvider.class)
 		providers[2].getClass().equals(DroneIoProvider.class)
