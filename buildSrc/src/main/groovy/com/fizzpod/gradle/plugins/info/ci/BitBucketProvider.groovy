@@ -6,9 +6,11 @@ import org.gradle.api.Project
 
 class BitBucketProvider extends AbstractContinuousIntegrationProvider {
 	
+	public static final String BITBUCKET_URL = 'https://bitbucket.org/';
+	
 	@Override
 	boolean supports(Project project) {
-		getEnvironmentVariable('BITBUCKET_REPO_SLUG')  != null
+		getEnvironmentVariable('BITBUCKET_REPO_SLUG') != null
 	}
 
 	@Override
@@ -23,14 +25,14 @@ class BitBucketProvider extends AbstractContinuousIntegrationProvider {
 
 	@Override
 	String calculateHost(Project project) {
-		getEnvironmentVariable('HOSTNAME')
+		BITBUCKET_URL + getEnvironmentVariable('BITBUCKET_REPO_OWNER')
+			+ "/" + getEnvironmentVariable('BITBUCKET_REPO_SLUG')
 	}
 
 	@Override
 	String calculateJob(Project project) {
 		getEnvironmentVariable('BITBUCKET_REPO_SLUG') + ":" + 
-			getEnvironmentVariable('BITBUCKET_BRANCH') + ":" +
-			getEnvironmentVariable('BITBUCKET_COMMIT')
+			getEnvironmentVariable('BITBUCKET_BRANCH') 
 	}
 
 	private String getEnvironmentVariable(String envKey) {
