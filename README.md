@@ -20,6 +20,7 @@ The Nebula gradle-info-plugin provides ci-info only for [Jenkins](http://jenkins
 - [Wercker](http://wercker.com/)
 - [Travis-CI](https://travis-ci.org/) [![Build Status](https://travis-ci.org/boxheed/gradle-extended-info-plugin.svg?branch=master)](https://travis-ci.org/boxheed/gradle-extended-info-plugin)
 - [Snap-CI](https://snap-ci.org/) [![Build Status](https://snap-ci.com/boxheed/gradle-extended-info-plugin/branch/master/build_image)](https://snap-ci.com/boxheed/gradle-extended-info-plugin/branch/master)
+- [Bitbucket Pipelines Beta](https://bitbucket.org/product/features/pipelines)
 
 ### Usage
 `apply plugin 'com.fizzpod.info'`
@@ -43,6 +44,8 @@ Like the Nebula gradle-info-plugin this plugin provides an uber plugin that appl
 `apply plugin 'com.fizzpod.info`
 
 ## Release Notes
+### 3.1.0
+* Support for BitBucket pipelines Beta
 ### 3.0.0
 * Updated gradle-info-plugin to 3.0.3
 * Updated supported version of gradle to 2.10
