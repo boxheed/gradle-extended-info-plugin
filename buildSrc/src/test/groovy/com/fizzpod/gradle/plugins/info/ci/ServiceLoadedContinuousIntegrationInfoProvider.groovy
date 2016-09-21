@@ -5,7 +5,7 @@ import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 import org.gradle.api.Project
 
 class ServiceLoadedContinuousIntegrationInfoProvider extends AbstractContinuousIntegrationProvider {
-	
+
 	@Override
 	boolean supports(Project project) {
 		false;
@@ -31,7 +31,7 @@ class ServiceLoadedContinuousIntegrationInfoProvider extends AbstractContinuousI
 		"CI_JOB"
 	}
 
-	private String getEnvironmentVariable(String envKey) {
+	protected String getEnvironmentVariable(String envKey) {
 		System.getenv(envKey)
 	}
 }

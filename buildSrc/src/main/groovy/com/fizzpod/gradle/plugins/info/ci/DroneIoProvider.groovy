@@ -5,7 +5,7 @@ import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 import org.gradle.api.Project
 
 class DroneIoProvider extends AbstractContinuousIntegrationProvider {
-	
+
 	@Override
 	boolean supports(Project project) {
 		getEnvironmentVariable('DRONE') != null
@@ -28,11 +28,8 @@ class DroneIoProvider extends AbstractContinuousIntegrationProvider {
 
 	@Override
 	String calculateJob(Project project) {
-		getEnvironmentVariable('DRONE_REPO_SLUG') + ":" + 
+		getEnvironmentVariable('DRONE_REPO_SLUG') + ":" +
 			getEnvironmentVariable('DRONE_BRANCH')
 	}
 
-	private String getEnvironmentVariable(String envKey) {
-		System.getenv(envKey)
-	}
 }
