@@ -5,9 +5,9 @@ import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 import org.gradle.api.Project
 
 class TravisProvider extends AbstractContinuousIntegrationProvider {
-	
+
 	public static final String TRAVIS_CI_URL = 'https://travis-ci.org/';
-	
+
 	@Override
 	boolean supports(Project project) {
 		getEnvironmentVariable('TRAVIS')  != null
@@ -30,11 +30,8 @@ class TravisProvider extends AbstractContinuousIntegrationProvider {
 
 	@Override
 	String calculateJob(Project project) {
-		getEnvironmentVariable('TRAVIS_REPO_SLUG') + ":" + 
+		getEnvironmentVariable('TRAVIS_REPO_SLUG') + ":" +
 			getEnvironmentVariable('TRAVIS_BUILD_ID')
 	}
 
-	private String getEnvironmentVariable(String envKey) {
-		System.getenv(envKey)
-	}
 }

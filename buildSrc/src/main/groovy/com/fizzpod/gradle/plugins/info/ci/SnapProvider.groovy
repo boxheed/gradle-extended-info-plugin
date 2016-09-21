@@ -5,9 +5,9 @@ import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 import org.gradle.api.Project
 
 class SnapProvider extends AbstractContinuousIntegrationProvider {
-	
+
 	public static final String SNAP_CI_URL = 'https://snap-ci.org/';
-	
+
 	@Override
 	boolean supports(Project project) {
 		getEnvironmentVariable('SNAP_CI')  != null
@@ -31,11 +31,8 @@ class SnapProvider extends AbstractContinuousIntegrationProvider {
 	@Override
 	String calculateJob(Project project) {
 	getEnvironmentVariable('SNAP_PIPELINE_COUNTER') + ":" +
-		getEnvironmentVariable('SNAP_COMMIT') + ":" + 
+		getEnvironmentVariable('SNAP_COMMIT') + ":" +
 			getEnvironmentVariable('SNAP_BRANCH')
 	}
 
-	private String getEnvironmentVariable(String envKey) {
-		System.getenv(envKey)
-	}
 }

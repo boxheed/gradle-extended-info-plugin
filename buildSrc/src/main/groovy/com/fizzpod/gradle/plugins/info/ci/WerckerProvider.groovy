@@ -5,7 +5,7 @@ import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 import org.gradle.api.Project
 
 class WerckerProvider extends AbstractContinuousIntegrationProvider {
-	
+
 	@Override
 	boolean supports(Project project) {
 		getEnvironmentVariable('WERCKER_ROOT')  != null
@@ -31,7 +31,4 @@ class WerckerProvider extends AbstractContinuousIntegrationProvider {
 		getEnvironmentVariable('WERCKER_BUILD_ID')
 	}
 
-	private String getEnvironmentVariable(String envKey) {
-		System.getenv(envKey)
-	}
 }

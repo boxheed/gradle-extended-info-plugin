@@ -5,9 +5,9 @@ import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 import org.gradle.api.Project
 
 class BitBucketProvider extends AbstractContinuousIntegrationProvider {
-	
+
 	public static final String BITBUCKET_URL = 'https://bitbucket.org/';
-	
+
 	@Override
 	boolean supports(Project project) {
 		getEnvironmentVariable('BITBUCKET_REPO_SLUG') != null
@@ -31,11 +31,8 @@ class BitBucketProvider extends AbstractContinuousIntegrationProvider {
 
 	@Override
 	String calculateJob(Project project) {
-		getEnvironmentVariable('BITBUCKET_REPO_SLUG') + ":" + 
-			getEnvironmentVariable('BITBUCKET_BRANCH') 
+		getEnvironmentVariable('BITBUCKET_REPO_SLUG') + ":" +
+			getEnvironmentVariable('BITBUCKET_BRANCH')
 	}
 
-	private String getEnvironmentVariable(String envKey) {
-		System.getenv(envKey)
-	}
 }

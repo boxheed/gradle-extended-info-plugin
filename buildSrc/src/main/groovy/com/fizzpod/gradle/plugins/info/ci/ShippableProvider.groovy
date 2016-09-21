@@ -5,7 +5,7 @@ import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 import org.gradle.api.Project
 
 class ShippableProvider extends AbstractContinuousIntegrationProvider {
-	
+
 	@Override
 	boolean supports(Project project) {
 		getEnvironmentVariable('SHIPPABLE') != null
@@ -28,11 +28,8 @@ class ShippableProvider extends AbstractContinuousIntegrationProvider {
 
 	@Override
 	String calculateJob(Project project) {
-		getEnvironmentVariable('SHIPPABLE_REPO_SLUG') + ":" + 
+		getEnvironmentVariable('SHIPPABLE_REPO_SLUG') + ":" +
 			getEnvironmentVariable('BRANCH')
 	}
 
-	private String getEnvironmentVariable(String envKey) {
-		System.getenv(envKey)
-	}
 }
