@@ -20,16 +20,15 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		then:
 		def providers = resolver.all()
 		providers != null
-		providers.size() == 9
+		providers.size() == 8
 		providers[0].getClass().equals(ServiceLoadedContinuousIntegrationInfoProvider.class)
 		providers[1].getClass().equals(JenkinsProvider.class)
 		providers[2].getClass().equals(DroneIoProvider.class)
 		providers[3].getClass().equals(ShippableProvider.class)
 		providers[4].getClass().equals(WerckerProvider.class)
 		providers[5].getClass().equals(TravisProvider.class)
-		providers[6].getClass().equals(SnapProvider.class)
-		providers[7].getClass().equals(BitBucketProvider.class)
-		providers[8].getClass().equals(UnknownContinuousIntegrationProvider.class)
+		providers[6].getClass().equals(BitBucketProvider.class)
+		providers[7].getClass().equals(UnknownContinuousIntegrationProvider.class)
 	}
 
 	def 'Get provider for this CI server'() {
@@ -39,7 +38,6 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		def onShippable = System.getenv('SHIPPABLE') != null
 		def onWercker = System.getenv('WERCKER_ROOT') != null
 		def onTravis = System.getenv('TRAVIS') != null
-		def onSnap = System.getenv('SNAP_CI') != null
 		def onBitBucket = System.getenv('BITBUCKET_COMMIT') != null
 		def resolver = new ContinuousIntegrationInfoProviderResolver()
 
@@ -56,8 +54,6 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 			provider.getClass().equals(WerckerProvider.class)
 		} else if(onTravis) {
 			provider.getClass().equals(TravisProvider.class)
-		} else if(onSnap) {
-			provider.getClass().equals(SnapProvider.class)
 		} else if(onBitBucket) {
 			provider.getClass().equals(BitBucketProvider.class)
 		} else {
