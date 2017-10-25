@@ -1,72 +1,72 @@
 buildscript {
-	repositories {
-		mavenLocal()
-		jcenter()
-		maven {
-      url "https://plugins.gradle.org/m2/"
+  repositories {
+    mavenLocal()
+    jcenter()
+    maven {
+    url "https://plugins.gradle.org/m2/"
+  }
+    maven {
+      url "https://dl.bintray.com/boxhead/maven/"
     }
-		maven {
-			url "https://dl.bintray.com/boxhead/maven/"
-		}
-	}
-	dependencies {
-		classpath ('com.fizzpod:gradle-plugin-opinion:5.1.0') {
-			exclude group: 'com.fizzpod', module: 'gradle-extended-info-plugin'
-		}
-	}
+  }
+  dependencies {
+    classpath ('com.fizzpod:gradle-plugin-opinion:5.1.0') {
+      exclude group: 'com.fizzpod', module: 'gradle-extended-info-plugin'
+    }
+  }
 }
 
 apply plugin: 'com.fizzpod.pater-build'
 apply from: 'buildSrc/build.gradle'
 
 sourceSets {
-    main {
-        java {
-            srcDir 'buildSrc/src/main/java'
-        }
-        resources {
-            srcDir 'buildSrc/src/main/resources'
-        }
-		groovy {
-		    srcDir 'buildSrc/src/main/groovy'
-		}
-	}
-	test {
-        java {
-            srcDir 'buildSrc/src/test/java'
-        }
-        resources {
-            srcDir 'buildSrc/src/test/resources'
-        }
-		groovy {
-		    srcDir 'buildSrc/src/test/groovy'
-		}
-	}
+  main {
+    java {
+      srcDir 'buildSrc/src/main/java'
+    }
+    resources {
+      srcDir 'buildSrc/src/main/resources'
+    }
+    groovy {
+      srcDir 'buildSrc/src/main/groovy'
+    }
+  }
+  test {
+    java {
+      srcDir 'buildSrc/src/test/java'
+    }
+    resources {
+      srcDir 'buildSrc/src/test/resources'
+    }
+    groovy {
+      srcDir 'buildSrc/src/test/groovy'
+    }
+  }
 }
 
 dependencies {
-	compile gradleApi()
-	compile localGroovy()
+  compile gradleApi()
+  compile localGroovy()
 }
 
 bintray {
-	dryRun = false
-	publish = true
-	pkg {
-		labels = ['gradle', 'plugin', 'ci', 'info', 'build']
-	}
+  dryRun = false
+  publish = true
+  pkg {
+    labels = ['gradle', 'plugin', 'ci', 'info', 'build']
+  }
 }
 
 pluginBundle {
 
-	description = 'Gradle plugin extending the nebula-info-plugin providing extension points and support for other CI servers.'
-	tags = ['gradle', 'plugin', 'ci', 'info', 'build']
+  description = 'Gradle plugin extending the nebula-info-plugin providing extension points and support for other CI servers.'
+  tags = ['gradle', 'plugin', 'ci', 'info', 'build']
 
   plugins {
 
-		plugin {
-		id = 'com.fizzpod.info'
-		displayName = 'Gradle Extended Info Plugin'
-    }
+    plugin {
+    id = 'com.fizzpod.info'
+    displayName = 'Gradle Extended Info Plugin'
+  }
   }
 }
