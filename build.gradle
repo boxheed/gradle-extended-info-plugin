@@ -66,8 +66,8 @@ pluginBundle {
   plugins {
 
     plugin {
-    id = 'com.fizzpod.info'
-    displayName = 'Gradle Extended Info Plugin'
-  }
+      id = 'com.fizzpod.info'
+      displayName = 'Gradle Extended Info Plugin'
+    }
   }
 }
