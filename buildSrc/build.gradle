@@ -3,7 +3,7 @@ repositories {
 }
 
 dependencies {
-  compile 'com.netflix.nebula:gradle-info-plugin:4.0.1'
+  compile 'com.netflix.nebula:gradle-info-plugin:5.0.3'
 
-  testCompile 'com.netflix.nebula:nebula-test:7.0.1'
+  testCompile 'com.netflix.nebula:nebula-test:7.2.5'
 }
