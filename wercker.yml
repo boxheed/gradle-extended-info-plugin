@@ -1,4 +1,4 @@
-box: mies/java7-oracle@0.0.1
+box: mihkels/java8-oracle@0.0.1
 # Build definition
 build:
   # The steps that will be executed on build
@@ -7,7 +7,7 @@ build:
         name: show base information
         code: |
           chmod +x gradlew
-          #./gradlew -v
+          ./gradlew -v
           #printenv
     # A step that executes `gradle build` command
     - script:
