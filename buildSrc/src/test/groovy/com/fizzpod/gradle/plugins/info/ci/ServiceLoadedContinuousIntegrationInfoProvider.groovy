@@ -1,11 +1,13 @@
 package com.fizzpod.gradle.plugins.info.ci
 
-import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
+import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider;
 
 import org.gradle.api.Project
 
-class ServiceLoadedContinuousIntegrationInfoProvider extends AbstractContinuousIntegrationProvider {
+class ServiceLoadedContinuousIntegrationInfoProvider implements ContinuousIntegrationInfoProvider {
 
+        EnvironmentHelper environmentHelper;
+    
 	@Override
 	boolean supports(Project project) {
 		false;
@@ -32,6 +34,6 @@ class ServiceLoadedContinuousIntegrationInfoProvider extends AbstractContinuousI
 	}
 
 	protected String getEnvironmentVariable(String envKey) {
-		System.getenv(envKey)
+            environmentHelper.getVariable(envKey);
 	}
 }

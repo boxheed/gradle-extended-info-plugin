@@ -15,7 +15,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 
 	def 'get all configured info providers'() {
 		when:
-		def resolver = new ContinuousIntegrationInfoProviderResolver()
+		def resolver = new ContinuousIntegrationInfoProviderResolver(project.getProviders())
 
 		then:
 		def providers = resolver.all()
@@ -39,7 +39,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		def onWercker = System.getenv('WERCKER_ROOT') != null
 		def onTravis = System.getenv('TRAVIS') != null
 		def onBitBucket = System.getenv('BITBUCKET_COMMIT') != null
-		def resolver = new ContinuousIntegrationInfoProviderResolver()
+		def resolver = new ContinuousIntegrationInfoProviderResolver(project.getProviders())
 
 		then:
 		def provider = resolver.findProvider(project)

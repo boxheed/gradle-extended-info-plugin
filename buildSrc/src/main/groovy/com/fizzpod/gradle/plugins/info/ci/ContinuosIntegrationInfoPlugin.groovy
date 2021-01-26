@@ -7,8 +7,12 @@ import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider
 import org.gradle.api.Plugin;
 import org.gradle.api.Project
 import org.gradle.api.internal.IConventionAware
+import org.gradle.api.provider.ProviderFactory
+
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+
+import javax.inject.Inject
 
 public class ContinuousIntegrationInfoPlugin implements Plugin<Project> {
 
@@ -26,6 +30,13 @@ public class ContinuousIntegrationInfoPlugin implements Plugin<Project> {
 
 	ContinuousIntegrationInfoProvider selectedProvider
 	ContinuousIntegrationInfoExtension extension
+
+	private final ProviderFactory providerFactory
+
+    @Inject
+    ContinuousIntegrationInfoPlugin(ProviderFactory providerFactory) {
+        this.providerFactory = providerFactory
+    }
 
 	@Override
 	void apply(Project project) {
@@ -50,6 +61,6 @@ public class ContinuousIntegrationInfoPlugin implements Plugin<Project> {
 	}
 
 	ContinuousIntegrationInfoProvider findProvider() {
-		return new ContinuousIntegrationInfoProviderResolver().findProvider(project)
+		return new ContinuousIntegrationInfoProviderResolver(providerFactory).findProvider(project)
 	}
 }

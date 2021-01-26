@@ -3,36 +3,40 @@ package com.fizzpod.gradle.plugins.info.ci
 import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 
 import org.gradle.api.Project
+import org.gradle.api.provider.ProviderFactory
 
 class BitBucketProvider extends AbstractContinuousIntegrationProvider {
 
-	public static final String BITBUCKET_URL = 'https://bitbucket.org/';
+    public static final String BITBUCKET_URL = 'https://bitbucket.org/';
 
-	@Override
-	boolean supports(Project project) {
-		getEnvironmentVariable('BITBUCKET_REPO_SLUG') != null
-	}
+    BitBucketProvider(ProviderFactory providerFactory) {
+        super(providerFactory)
+    }
 
-	@Override
-	String calculateBuildNumber(Project project) {
-		getEnvironmentVariable('BITBUCKET_COMMIT')
-	}
+    @Override
+    boolean supports(Project project) {
+        getEnvironmentVariable('BITBUCKET_REPO_SLUG') != null
+    }
 
-	@Override
-	String calculateBuildId(Project project) {
-		getEnvironmentVariable('BITBUCKET_COMMIT')
-	}
+    @Override
+    String calculateBuildNumber(Project project) {
+        getEnvironmentVariable('BITBUCKET_COMMIT')
+    }
 
-	@Override
-	String calculateHost(Project project) {
-		BITBUCKET_URL + getEnvironmentVariable('BITBUCKET_REPO_OWNER') +
-			"/" + getEnvironmentVariable('BITBUCKET_REPO_SLUG')
-	}
+    @Override
+    String calculateBuildId(Project project) {
+        getEnvironmentVariable('BITBUCKET_COMMIT')
+    }
 
-	@Override
-	String calculateJob(Project project) {
-		getEnvironmentVariable('BITBUCKET_REPO_SLUG') + ":" +
-			getEnvironmentVariable('BITBUCKET_BRANCH')
-	}
+    @Override
+    String calculateHost(Project project) {
+        BITBUCKET_URL + getEnvironmentVariable('BITBUCKET_REPO_OWNER') +
+                "/" + getEnvironmentVariable('BITBUCKET_REPO_SLUG')
+    }
 
+    @Override
+    String calculateJob(Project project) {
+        getEnvironmentVariable('BITBUCKET_REPO_SLUG') + ":" +
+                getEnvironmentVariable('BITBUCKET_BRANCH')
+    }
 }
