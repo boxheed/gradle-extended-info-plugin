@@ -38,4 +38,9 @@ class TravisProvider extends AbstractContinuousIntegrationProvider {
         getEnvironmentVariable('TRAVIS_REPO_SLUG') + ":" +
                 getEnvironmentVariable('TRAVIS_BUILD_ID')
     }
+
+    @Override
+    String calculateBuildUrl(Project project) {
+        return calculateHost(project)
+    }
 }

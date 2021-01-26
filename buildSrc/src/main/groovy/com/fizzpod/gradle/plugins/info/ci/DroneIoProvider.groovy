@@ -37,4 +37,9 @@ class DroneIoProvider extends AbstractContinuousIntegrationProvider {
 			getEnvironmentVariable('DRONE_BRANCH')
 	}
 
+        @Override
+        String calculateBuildUrl(Project project) {
+            return calculateHost(project)
+        }
+    
 }

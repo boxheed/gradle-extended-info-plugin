@@ -7,6 +7,7 @@ build:
   ci:
     - source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/1.2/java-build-ci-setup)
     - ./gradlew clean build
+    - cat ./build/manifest/gradle-extended-info-plugin.properties
     - if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; fi
     - if [ "$BRANCH" == "master" ]; then ./gradlew clean build; fi
     - if [ "$BRANCH" == "master" ]; then git push --tags; fi
