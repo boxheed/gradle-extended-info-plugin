@@ -3,8 +3,13 @@ package com.fizzpod.gradle.plugins.info.ci
 import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
 
 import org.gradle.api.Project
+import org.gradle.api.provider.ProviderFactory
 
 class ShippableProvider extends AbstractContinuousIntegrationProvider {
+
+	ShippableProvider(ProviderFactory providerFactory) {
+        super(providerFactory)
+    }
 
 	@Override
 	boolean supports(Project project) {
