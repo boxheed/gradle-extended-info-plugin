@@ -12,7 +12,6 @@ build:
     - if [ "$BRANCH" == "master" ]; then git push --tags; fi
     - if [ "$BRANCH" == "master" ]; then ./gradlew bintrayUpload; fi
     - if [ "$BRANCH" == "master" ]; then ./gradlew publishPlugins; fi
-    - unzip ./build/libs/gradle-extended-info-plugin-7.1.5-SNAPSHOT.jar && cat ./META-INF/MANIFEST.MF
 
   on_success:
     - source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/1.2/java-on-success)
