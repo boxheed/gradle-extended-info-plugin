@@ -6,34 +6,39 @@ import org.gradle.api.Project
 
 class ServiceLoadedContinuousIntegrationInfoProvider implements ContinuousIntegrationInfoProvider {
 
-        EnvironmentHelper environmentHelper;
-    
-	@Override
-	boolean supports(Project project) {
-		false;
-	}
+    EnvironmentHelper environmentHelper;
 
-	@Override
-	String calculateBuildNumber(Project project) {
-		"CI_NUMBER"
-	}
+    @Override
+    boolean supports(Project project) {
+        false;
+    }
 
-	@Override
-	String calculateBuildId(Project project) {
-		"CI_BUILD_ID_1"
-	}
+    @Override
+    String calculateBuildNumber(Project project) {
+        "CI_NUMBER"
+    }
 
-	@Override
-	String calculateHost(Project project) {
-		"CI_HOST"
-	}
+    @Override
+    String calculateBuildId(Project project) {
+        "CI_BUILD_ID_1"
+    }
 
-	@Override
-	String calculateJob(Project project) {
-		"CI_JOB"
-	}
+    @Override
+    String calculateHost(Project project) {
+        "CI_HOST"
+    }
 
-	protected String getEnvironmentVariable(String envKey) {
-            environmentHelper.getVariable(envKey);
-	}
+    @Override
+    String calculateJob(Project project) {
+        "CI_JOB"
+    }
+
+    @Override
+    String calculateBuildUrl(Project project) {
+        return "CI_BUILD_URL"
+    }
+
+    protected String getEnvironmentVariable(String envKey) {
+        environmentHelper.getVariable(envKey);
+    }
 }
