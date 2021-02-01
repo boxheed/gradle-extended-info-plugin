@@ -38,7 +38,12 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: ./gradlew dependencies
+      - run: mkdir ~/.gradle
+      - run: printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> $HOME/.gradle/gradle.properties
+      - run: echo "org.gradle.daemon=false" >> $HOME/.gradle/gradle.properties && echo "org.gradle.java.home=$JAVA_HOME" >> $HOME/.gradle/gradle.properties
+      - run: echo "gradle.properties keys" && cat $HOME/.gradle/gradle.properties | cut -d'=' -f 1
+
+      - run: ./gradlew tasks
 
       - save_cache:
           paths:
@@ -46,6 +51,6 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       # run tests!
-      - run: ./gradlew build
+      - run: ./gradlew -version
 
       - run: git remote -v
