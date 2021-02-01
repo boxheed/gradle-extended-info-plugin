@@ -3,6 +3,12 @@
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
+
+workflows:
+  test-env-vars:
+    jobs:
+      - build:
+          context: boxhead-builds # has an env var called MY_ENV_VAR
 jobs:
   build:
     docker:
