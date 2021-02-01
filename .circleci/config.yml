@@ -9,7 +9,7 @@ workflows:
     jobs:
       - build:
           context: boxhead-builds # has an env var called MY_ENV_VAR
-          
+
 jobs:
   build:
     docker:
@@ -48,4 +48,4 @@ jobs:
       # run tests!
       - run: ./gradlew build
 
-      - run: printenv
+      - run: git remote -v
