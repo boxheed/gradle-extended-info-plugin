@@ -5,7 +5,7 @@
 version: 2.1
 
 workflows:
-  test-env-vars:
+  main:
     jobs:
       - build:
           context: boxhead-builds # has an env var called MY_ENV_VAR
@@ -32,25 +32,29 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
+#      - restore_cache:
+#          keys:
+#            - v1-dependencies-{{ checksum "build.gradle" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+#            - v1-dependencies-
 
       - run: mkdir -p ~/.gradle
-      - run: printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> $HOME/.gradle/gradle.properties
-      - run: echo "org.gradle.daemon=false" >> $HOME/.gradle/gradle.properties && echo "org.gradle.java.home=$JAVA_HOME" >> $HOME/.gradle/gradle.properties
-      - run: echo "gradle.properties keys" && cat $HOME/.gradle/gradle.properties | cut -d'=' -f 1
+      - run: printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> ~/.gradle/gradle.properties
+      - run: echo "org.gradle.daemon=false" >> ~/.gradle/gradle.properties && echo "org.gradle.java.home=$JAVA_HOME" >> ~/.gradle/gradle.properties
+      - run: echo "gradle.properties keys" && cat ~/.gradle/gradle.properties | cut -d'=' -f 1
 
-      - run: ./gradlew tasks
+#      - run: ./gradlew dependencies
 
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+#      - save_cache:
+#          paths:
+#            - ~/.gradle
+#          key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run tests!
-      - run: ./gradlew -version
+      - run: ./gradlew clean build
+      - run: cat ./build/manifest/gradle-extended-info-plugin.properties
+      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; fi
+      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean build; fi
+      - run: if [ "$BRANCH" == "master" ]; then git push --tags; fi
+      - run: if [ "$BRANCH" == "master" ]; then ./gradlew bintrayUpload; fi
+      - run: if [ "$BRANCH" == "master" ]; then ./gradlew publishPlugins; fi
 
-      - run: git remote -v
