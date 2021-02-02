@@ -33,7 +33,9 @@ jobs:
 #            - v1-dependencies-{{ checksum "build.gradle" }}
             # fallback to using the latest cache if no exact match is found
 #            - v1-dependencies-
-      - run: source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
+      - run:
+        - name: setup
+        - command: source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
 
 #      - run: ./gradlew dependencies
 
