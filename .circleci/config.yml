@@ -62,6 +62,7 @@ workflows:
           context: boxhead-builds
       - build:
           context: boxhead-builds
-          requires: setup
+          requires: 
+            - setup
 #      - pubish:
 #          context: boxhead-builds
