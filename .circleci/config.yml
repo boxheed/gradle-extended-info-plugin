@@ -7,7 +7,7 @@ version: 2.1
 
 
 jobs:
-  build_and_test:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
