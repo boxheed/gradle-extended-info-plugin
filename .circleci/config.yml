@@ -7,15 +7,6 @@ version: 2.1
 
 
 jobs:
-  setup:
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
-    steps:
-      - run:
-          name: setup
-          command: source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
-
   build:
     docker:
       # specify the version you desire here
@@ -26,10 +17,12 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
     steps:
+      - run:
+          name: setup
+          command: source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
       - checkout
-      - run: cat $HOME/.gradle/gradle.properties | cut -d'=' -f 1
       - run: ./gradlew clean build
-
+  
   publish:
     docker:
       # specify the version you desire here
@@ -58,11 +51,7 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - setup:
-          context: boxhead-builds
       - build:
           context: boxhead-builds
-          requires: 
-            - setup
-#      - pubish:
-#          context: boxhead-builds
+      - pubish:
+          context: boxhead-builds
