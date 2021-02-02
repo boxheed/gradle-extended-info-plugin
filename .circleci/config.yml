@@ -4,14 +4,10 @@
 #
 version: 2.1
 
-workflows:
-  main:
-    jobs:
-      - build:
-          context: boxhead-builds # has an env var called MY_ENV_VAR
+
 
 jobs:
-  build:
+  build_and_test:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
@@ -58,3 +54,10 @@ jobs:
       - run: if [ "$BRANCH" == "master" ]; then ./gradlew bintrayUpload; fi
       - run: if [ "$BRANCH" == "master" ]; then ./gradlew publishPlugins; fi
 
+
+
+workflows:
+  build_and_test:
+    jobs:
+      - build:
+          context: boxhead-builds
