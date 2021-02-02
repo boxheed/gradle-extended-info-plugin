@@ -33,11 +33,7 @@ jobs:
 #            - v1-dependencies-{{ checksum "build.gradle" }}
             # fallback to using the latest cache if no exact match is found
 #            - v1-dependencies-
-
-      - run: mkdir -p ~/.gradle
-      - run: printenv | grep GRADLE_PROP | cut -d'=' -f 2- >> ~/.gradle/gradle.properties
-      - run: echo "org.gradle.daemon=false" >> ~/.gradle/gradle.properties && echo "org.gradle.java.home=$JAVA_HOME" >> ~/.gradle/gradle.properties
-      - run: echo "gradle.properties keys" && cat ~/.gradle/gradle.properties | cut -d'=' -f 1
+      - run: source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
 
 #      - run: ./gradlew dependencies
 
@@ -47,12 +43,12 @@ jobs:
 #          key: v1-dependencies-{{ checksum "build.gradle" }}
 
       - run: ./gradlew clean build
-      - run: cat ./build/manifest/gradle-extended-info-plugin.properties
-      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; fi
-      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean build; fi
-      - run: if [ "$BRANCH" == "master" ]; then git push --tags; fi
-      - run: if [ "$BRANCH" == "master" ]; then ./gradlew bintrayUpload; fi
-      - run: if [ "$BRANCH" == "master" ]; then ./gradlew publishPlugins; fi
+#      - run: cat ./build/manifest/gradle-extended-info-plugin.properties
+#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; fi
+#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean build; fi
+#      - run: if [ "$BRANCH" == "master" ]; then git push --tags; fi
+#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew bintrayUpload; fi
+#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew publishPlugins; fi
 
 
 
