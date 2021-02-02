@@ -37,12 +37,12 @@ jobs:
           name: setup
           command: source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
       - checkout
-      - run: echo "HELLO"
-#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean verifyRelease createRelease; fi
-#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew clean build; fi
-#      - run: if [ "$BRANCH" == "master" ]; then git push --tags; fi
-#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew bintrayUpload; fi
-#      - run: if [ "$BRANCH" == "master" ]; then ./gradlew publishPlugins; fi
+      - run: echo "publishing"
+      - run: ./gradlew clean verifyRelease createRelease
+      - run: ./gradlew clean build
+      - run: git push --tags
+      - run: ./gradlew bintrayUpload
+      - run: ./gradlew publishPlugins
 
 workflows:
   build:
@@ -53,6 +53,6 @@ workflows:
           context: boxhead-builds
           requires:
             - build
-#          filters:
-#            branches:
-#              only: master
+          filters:
+            branches:
+              only: master
