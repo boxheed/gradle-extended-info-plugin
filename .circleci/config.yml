@@ -45,12 +45,7 @@ jobs:
 #      - run: if [ "$BRANCH" == "master" ]; then ./gradlew publishPlugins; fi
 
 workflows:
-  build_and_test:
-    jobs:
-      - build:
-          context: boxhead-builds
-          
-  publish:
+  build:
     jobs:
       - build:
           context: boxhead-builds
