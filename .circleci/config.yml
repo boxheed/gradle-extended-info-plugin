@@ -53,5 +53,5 @@ workflows:
     jobs:
       - build:
           context: boxhead-builds
-      - pubish:
+      - publish:
           context: boxhead-builds
