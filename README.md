@@ -57,3 +57,5 @@ Like the Nebula gradle-info-plugin this plugin provides an uber plugin that appl
 * Support for version 2.2.0 of the gradle-info-plugin
 
 
+
+
