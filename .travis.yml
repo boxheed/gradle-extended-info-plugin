@@ -4,7 +4,3 @@ jdk:
 
 before_install:
   - chmod +x gradlew
-
-script:
-  - # do stuff with Java 8
-  - jdk_switcher use openjdk8
