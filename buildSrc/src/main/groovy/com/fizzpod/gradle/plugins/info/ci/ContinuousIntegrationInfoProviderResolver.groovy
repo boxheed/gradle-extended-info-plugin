@@ -3,6 +3,7 @@ package com.fizzpod.gradle.plugins.info.ci;
 import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider
 import nebula.plugin.info.ci.UnknownContinuousIntegrationProvider
 import nebula.plugin.info.ci.JenkinsProvider
+import nebula.plugin.info.ci.CircleCIProvider
 
 import org.gradle.api.provider.ProviderFactory
 
@@ -27,7 +28,7 @@ public class ContinuousIntegrationInfoProviderResolver {
         defaultProviders = [
             new JenkinsProvider(providerFactory),
             new DroneIoProvider(providerFactory),
-            new ShippableProvider(providerFactory),
+            new CircleCIProvider(providerFactory),
             new WerckerProvider(providerFactory),
             new TravisProvider(providerFactory),
             new BitBucketProvider(providerFactory),

@@ -2,6 +2,7 @@ package com.fizzpod.gradle.plugins.info.ci
 
 
 import nebula.plugin.info.ci.JenkinsProvider
+import nebula.plugin.info.ci.CircleCIProvider
 import nebula.plugin.info.ci.UnknownContinuousIntegrationProvider
 import nebula.test.ProjectSpec;
 import org.slf4j.Logger;
@@ -24,7 +25,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		providers[0].getClass().equals(ServiceLoadedContinuousIntegrationInfoProvider.class)
 		providers[1].getClass().equals(JenkinsProvider.class)
 		providers[2].getClass().equals(DroneIoProvider.class)
-		providers[3].getClass().equals(ShippableProvider.class)
+		providers[3].getClass().equals(CircleCIProvider.class)
 		providers[4].getClass().equals(WerckerProvider.class)
 		providers[5].getClass().equals(TravisProvider.class)
 		providers[6].getClass().equals(BitBucketProvider.class)
@@ -35,7 +36,7 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 		when:
 		def onJenkins = System.getenv('BUILD_NUMBER') && System.getenv('JOB_NAME')
 		def onDrone = System.getenv('DRONE') != null
-		def onShippable = System.getenv('SHIPPABLE') != null
+		def onCircle = System.getenv('CIRCLECI') != null
 		def onWercker = System.getenv('WERCKER_ROOT') != null
 		def onTravis = System.getenv('TRAVIS') != null
 		def onBitBucket = System.getenv('BITBUCKET_COMMIT') != null
@@ -48,8 +49,8 @@ class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 			provider.getClass().equals(JenkinsProvider.class)
 		} else if(onDrone) {
 			provider.getClass().equals(ServiceLoadedContinuousIntegrationInfoProvider.class)
-		} else if(onShippable) {
-			provider.getClass().equals(ShippableProvider.class)
+		} else if(onCircle) {
+			provider.getClass().equals(CircleCIProvider.class)
 		} else if(onWercker) {
 			provider.getClass().equals(WerckerProvider.class)
 		} else if(onTravis) {
