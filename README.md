@@ -1,4 +1,4 @@
-
+[![CircleCI](https://circleci.com/gh/boxheed/gradle-extended-info-plugin/tree/master.svg?style=shield)](https://circleci.com/gh/boxheed/gradle-extended-info-plugin/tree/master)
 
 # Gradle Extended Info Plugin
 A plugin extending the capability of the Nebula [gradle-info-plugin](https://github.com/nebula-plugins/gradle-info-plugin "nebula gradle-info-plugin").
@@ -15,11 +15,10 @@ This plugin uses version 3.0.3 of the gradle-info-plugin.
 ## Extended info-ci plugin
 The Nebula gradle-info-plugin provides ci-info only for [Jenkins](http://jenkins-ci.org/ "Jenkins-CI"), but not for the many other continuous integration servers. This plugin provides ci-info for the following CI servers:
 - [Jenkins](http://jenkins-ci.org/), (the default Nebula implementation)
-- [Drone.io](https://drone.io/) [![Build Status](https://drone.io/github.com/boxheed/gradle-extended-info-plugin/status.png)](https://drone.io/github.com/boxheed/gradle-extended-info-plugin/latest)
-- [Shippable](https://www.shippable.com/) [![Build Status](https://api.shippable.com/projects/54f037b55ab6cc13528f0e61/badge?branchName=master)](https://app.shippable.com/projects/54f037b55ab6cc13528f0e61/builds/latest)
+- [Drone.io](https://drone.io/) 
 - [Wercker](http://wercker.com/)
-- [Travis-CI](https://travis-ci.org/) [![Build Status](https://travis-ci.org/boxheed/gradle-extended-info-plugin.svg?branch=master)](https://travis-ci.org/boxheed/gradle-extended-info-plugin)
-- [Snap-CI](https://snap-ci.org/) [![Build Status](https://snap-ci.com/boxheed/gradle-extended-info-plugin/branch/master/build_image)](https://snap-ci.com/boxheed/gradle-extended-info-plugin/branch/master)
+- [Travis-CI](https://travis-ci.org/) 
+- [Snap-CI](https://snap-ci.org/) 
 - [Bitbucket Pipelines Beta](https://bitbucket.org/product/features/pipelines)
 
 ### Usage
