@@ -4,7 +4,7 @@
 A plugin extending the capability of the Nebula [gradle-info-plugin](https://github.com/nebula-plugins/gradle-info-plugin "nebula gradle-info-plugin").
 ```
 buildscript {
-    repositories { jcenter() }
+    repositories { mavenCentral() }
     dependencies { classpath 'com.fizzpod.gradle-extended-info-plugin:3.0.+' }
 }
 ```
