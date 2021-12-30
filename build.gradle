@@ -51,7 +51,7 @@ dependencies {
 pluginBundle {
 
   description = 'Gradle plugin extending the nebula-info-plugin providing extension points and support for other CI servers.'
-  tags = ['gradle', 'plugin', 'ci', 'info', 'build']
+  tags = ['ci', 'info', 'build']
 
   plugins {
 
