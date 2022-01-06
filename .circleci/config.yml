@@ -19,7 +19,7 @@ jobs:
           name: setup
           command: source <(curl -s https://raw.githubusercontent.com/boxheed/shippable-scripts/master/java-build-ci-setup)
       - checkout
-      - run: ./gradlew clean build
+      - run: ./gradlew clean build 
   
   publish:
     docker:
