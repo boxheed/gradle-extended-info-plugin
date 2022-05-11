@@ -3,6 +3,6 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.netflix.nebula:gradle-info-plugin:11.2.0'
+  implementation 'com.netflix.nebula:gradle-info-plugin:11.3.3'
   testImplementation 'com.netflix.nebula:nebula-test:10.2.0'
 }
