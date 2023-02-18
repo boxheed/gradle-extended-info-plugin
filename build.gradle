@@ -48,8 +48,17 @@ dependencies {
   api gradleApi()
   api localGroovy()
   constraints {
-    implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10') {
+    implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk8') {
       because 'version 1.3.5 as defined by nebula gradle-info-plugin has a known vulnerability'
+      version {
+        require '1.6.10'
+      }
+    }
+    implementation('org.jetbrains.kotlin:kotlin-stdlib') {
+      because 'version 1.3.5 as defined by nebula gradle-info-plugin has a known vulnerability'
+      version {
+        require '1.6.10'
+      }
     }
     implementation('org.bouncycastle:bcpg-jdk15on') {
       because 'version 1.64 as defined by nebula gradle-info-plugin has a known vulnerability'
