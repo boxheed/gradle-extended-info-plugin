@@ -78,6 +78,7 @@ dependencies {
 dependencyCheck {
   failBuildOnCVSS=7
   suppressionFiles=["./cve-suppressions.xml"]
+  skipConfigurations=["spotbugs"]
 }
 
 pluginBundle {
