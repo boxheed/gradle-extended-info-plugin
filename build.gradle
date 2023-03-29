@@ -81,16 +81,11 @@ dependencyCheck {
   skipConfigurations=["spotbugs"]
 }
 
-pluginBundle {
-
-  description = 'Gradle plugin extending the nebula-info-plugin providing extension points and support for other CI servers.'
-  tags = ['ci', 'info', 'build']
-  //duplicatesStrategy 'exclude'
-}
-
 gradlePlugin {
   plugins {
     plugin {
+      description = 'Gradle plugin extending the nebula-info-plugin providing extension points and support for other CI servers.'
+      tags.set(['ci', 'info', 'build'])
       id = 'com.fizzpod.info'
       displayName = 'Gradle Extended Info Plugin'
       implementationClass = 'com.fizzpod.gradle.plugins.info.InfoPlugin'
