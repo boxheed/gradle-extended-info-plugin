@@ -3,7 +3,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'com.netflix.nebula:gradle-info-plugin:12.1.0'
+  implementation 'com.netflix.nebula:gradle-info-plugin:12.1.4'
   testImplementation 'com.netflix.nebula:nebula-test:10.5.0'
   constraints {
     implementation('org.jetbrains.kotlin:kotlin-stdlib-jdk8') {
