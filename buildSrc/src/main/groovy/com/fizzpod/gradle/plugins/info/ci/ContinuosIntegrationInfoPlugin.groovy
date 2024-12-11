@@ -1,18 +1,17 @@
-package com.fizzpod.gradle.plugins.info.ci;
+/* (C) 2024 */
+/* SPDX-License-Identifier: Apache-2.0 */
+package com.fizzpod.gradle.plugins.info.ci
 
+import javax.inject.Inject
 import nebula.plugin.info.InfoBrokerPlugin
 import nebula.plugin.info.ci.ContinuousIntegrationInfoExtension
 import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider
-
-import org.gradle.api.Plugin;
+import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.internal.IConventionAware
 import org.gradle.api.provider.ProviderFactory
-
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-
-import javax.inject.Inject
 
 public class ContinuousIntegrationInfoPlugin implements Plugin<Project> {
 
@@ -24,7 +23,7 @@ public class ContinuousIntegrationInfoPlugin implements Plugin<Project> {
 
 	private static final String BUILD_HOST = 'Build-Host'
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ContinuousIntegrationInfoPlugin.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ContinuousIntegrationInfoPlugin.class)
 	protected Project project
 
 
