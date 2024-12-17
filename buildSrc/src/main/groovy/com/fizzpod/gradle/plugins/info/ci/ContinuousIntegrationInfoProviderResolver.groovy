@@ -1,26 +1,26 @@
-package com.fizzpod.gradle.plugins.info.ci;
+/* (C) 2024 */
+/* SPDX-License-Identifier: Apache-2.0 */
+package com.fizzpod.gradle.plugins.info.ci
 
-import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider
-import nebula.plugin.info.ci.UnknownContinuousIntegrationProvider
-import nebula.plugin.info.ci.JenkinsProvider
 import nebula.plugin.info.ci.CircleCIProvider
-
+import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider
+import nebula.plugin.info.ci.JenkinsProvider
+import nebula.plugin.info.ci.UnknownContinuousIntegrationProvider
 import org.gradle.api.provider.ProviderFactory
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 
 public class ContinuousIntegrationInfoProviderResolver {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContinuousIntegrationInfoProviderResolver.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ContinuousIntegrationInfoProviderResolver.class)
 
     private final ProviderFactory providerFactory
 
     private defaultProviders = []
 
     private static ServiceLoader<ContinuousIntegrationInfoProvider> continuousIntegrationInfoProviderServiceLoader = ServiceLoader
-    .load(ContinuousIntegrationInfoProvider.class);
+    .load(ContinuousIntegrationInfoProvider.class)
 
 
     ContinuousIntegrationInfoProviderResolver(ProviderFactory providerFactory) {
@@ -37,11 +37,11 @@ public class ContinuousIntegrationInfoProviderResolver {
     }
 
     def all () {
-        def providers = continuousIntegrationInfoProviderServiceLoader.asList() + defaultProviders;
+        def providers = continuousIntegrationInfoProviderServiceLoader.asList() + defaultProviders
         providers.each {
             applyEnvrionmentHelper(it)
         }
-        return providers;
+        return providers
     }
 
     ContinuousIntegrationInfoProvider findProvider(project) {
@@ -55,13 +55,13 @@ public class ContinuousIntegrationInfoProviderResolver {
         }
 
         applyEnvrionmentHelper(provider)
-        return provider;
+        return provider
     }
     
     def applyEnvrionmentHelper(provider) {
         if(provider.hasProperty("environmentHelper")) {
-            LOGGER.info("Setting environment helper on " + provider);
-            provider.environmentHelper = new EnvironmentHelper(this.providerFactory);
+            LOGGER.info("Setting environment helper on " + provider)
+            provider.environmentHelper = new EnvironmentHelper(this.providerFactory)
         }
     }
 }

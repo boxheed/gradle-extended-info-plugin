@@ -1,13 +1,14 @@
+/* (C) 2024 */
+/* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
-import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider;
-import org.gradle.api.provider.ProviderFactory
-
+import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider
 import org.gradle.api.Project
+import org.gradle.api.provider.ProviderFactory
 
 class TravisProvider extends AbstractContinuousIntegrationProvider {
 
-    public static final String TRAVIS_CI_URL = 'https://travis-ci.org/';
+    public static final String TRAVIS_CI_URL = 'https://travis-ci.org/'
 
     TravisProvider(ProviderFactory providerFactory) {
         super(providerFactory)

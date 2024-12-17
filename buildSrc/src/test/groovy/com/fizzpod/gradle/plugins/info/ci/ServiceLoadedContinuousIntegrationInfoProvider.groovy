@@ -1,16 +1,17 @@
+/* (C) 2024 */
+/* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
-import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider;
-
+import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider
 import org.gradle.api.Project
 
 class ServiceLoadedContinuousIntegrationInfoProvider implements ContinuousIntegrationInfoProvider {
 
-    EnvironmentHelper environmentHelper;
+    EnvironmentHelper environmentHelper
 
     @Override
     boolean supports(Project project) {
-        false;
+        false
     }
 
     @Override
@@ -39,6 +40,6 @@ class ServiceLoadedContinuousIntegrationInfoProvider implements ContinuousIntegr
     }
 
     protected String getEnvironmentVariable(String envKey) {
-        environmentHelper.getVariable(envKey);
+        environmentHelper.getVariable(envKey)
     }
 }

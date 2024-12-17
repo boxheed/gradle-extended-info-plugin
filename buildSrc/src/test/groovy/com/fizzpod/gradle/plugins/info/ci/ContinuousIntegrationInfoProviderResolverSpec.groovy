@@ -1,18 +1,19 @@
+/* (C) 2024 */
+/* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
 
-import nebula.plugin.info.ci.JenkinsProvider
-import nebula.plugin.info.ci.CircleCIProvider
-import nebula.plugin.info.ci.UnknownContinuousIntegrationProvider
-import nebula.test.ProjectSpec;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fizzpod.gradle.plugins.info.ci.ContinuousIntegrationInfoProviderResolver
+import nebula.plugin.info.ci.CircleCIProvider
+import nebula.plugin.info.ci.JenkinsProvider
+import nebula.plugin.info.ci.UnknownContinuousIntegrationProvider
+import nebula.test.ProjectSpec
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class ContinuousIntegrationInfoProviderResolverSpec extends ProjectSpec {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ContinuousIntegrationInfoProviderResolverSpec.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ContinuousIntegrationInfoProviderResolverSpec.class)
 
 	def 'get all configured info providers'() {
 		when:
