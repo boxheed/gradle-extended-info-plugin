@@ -1,8 +1,10 @@
-/* (C) 2024 */
+/* (C) 2024-2025 */
 /* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info
 
 import com.fizzpod.gradle.plugins.info.ci.ContinuousIntegrationInfoPlugin
+import groovy.time.TimeCategory 
+import groovy.time.TimeDuration
 import nebula.plugin.info.InfoBrokerPlugin
 import nebula.plugin.info.basic.BasicInfoPlugin
 import nebula.plugin.info.basic.ManifestOwnersPlugin
@@ -22,18 +24,29 @@ public class InfoPlugin implements Plugin<Project> {
 
 	void apply(Project project) {
 		// Broker
-		project.plugins.apply(InfoBrokerPlugin)
+		applyPlugin(project, InfoBrokerPlugin)
 
 		// Collectors
-		project.plugins.apply(BasicInfoPlugin)
-		project.plugins.apply(ManifestOwnersPlugin)
-		project.plugins.apply(ScmInfoPlugin)
-		project.plugins.apply(ContinuousIntegrationInfoPlugin)
-		project.plugins.apply(InfoJavaPlugin)
+		applyPlugin(project, BasicInfoPlugin)
+		applyPlugin(project, ManifestOwnersPlugin)
+		applyPlugin(project, ScmInfoPlugin)
+		applyPlugin(project, ContinuousIntegrationInfoPlugin)
+		applyPlugin(project, InfoJavaPlugin)
 
 		// Reporting
-		project.plugins.apply(InfoPropertiesFilePlugin)
-		project.plugins.apply(InfoJarPropertiesFilePlugin)
-		project.plugins.apply(InfoJarManifestPlugin)
+		applyPlugin(project, InfoPropertiesFilePlugin)
+		applyPlugin(project, InfoJarPropertiesFilePlugin)
+		applyPlugin(project, InfoJarManifestPlugin)
 	}
+
+	void applyPlugin(def project, def plugin) {
+		Date start = new Date()
+		project.plugins.apply(plugin)
+
+		Date stop = new Date()
+
+		TimeDuration td = TimeCategory.minus( stop, start )
+		println "${plugin} ${td}"
+	}
+
 }
