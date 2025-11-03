@@ -4,7 +4,7 @@ repositories {
 
 dependencies {
   implementation 'com.netflix.nebula:gradle-info-plugin:14.0.0'
-  testImplementation('com.netflix.nebula:nebula-test:11.6.3') 
+  testImplementation('com.netflix.nebula:nebula-test:11.7.1') 
   testImplementation('org.spockframework:spock-core:2.3-groovy-4.0')
   testImplementation("org.spockframework:spock-junit4:2.3-groovy-4.0")
   testImplementation("org.junit.vintage:junit-vintage-engine:6.0.0")
