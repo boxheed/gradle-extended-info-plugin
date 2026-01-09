@@ -12,6 +12,7 @@ buildscript {
     classpath ('com.fizzpod:gradle-plugin-opinion:24.0.8') {
       exclude group: 'com.fizzpod', module: 'gradle-extended-info-plugin'
     }
+    classpath 'com.fizzpod.github-release:com.fizzpod.github-release.gradle.plugin:3.2.0'
   }
 }
 
