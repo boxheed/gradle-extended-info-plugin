@@ -1,41 +1,41 @@
-/* (C) 2024 */
+/* (C) 2024-2026 */
 /* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
 import nebula.plugin.info.ci.ContinuousIntegrationInfoProvider
-import org.gradle.api.Project
+import org.gradle.api.provider.Provider
 
 class ServiceLoadedContinuousIntegrationInfoProvider implements ContinuousIntegrationInfoProvider {
 
     EnvironmentHelper environmentHelper
 
     @Override
-    boolean supports(Project project) {
+    boolean supports() {
         false
     }
 
     @Override
-    String calculateBuildNumber(Project project) {
+    Provider<String> buildNumber() {
         "CI_NUMBER"
     }
 
     @Override
-    String calculateBuildId(Project project) {
+    Provider<String> buildId() {
         "CI_BUILD_ID_1"
     }
 
     @Override
-    String calculateHost(Project project) {
+    Provider<String> host() {
         "CI_HOST"
     }
 
     @Override
-    String calculateJob(Project project) {
+    Provider<String> job() {
         "CI_JOB"
     }
 
     @Override
-    String calculateBuildUrl(Project project) {
+    Provider<String> buildUrl() {
         return "CI_BUILD_URL"
     }
 

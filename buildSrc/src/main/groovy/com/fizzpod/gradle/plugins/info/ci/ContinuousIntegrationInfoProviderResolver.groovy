@@ -1,4 +1,4 @@
-/* (C) 2024 */
+/* (C) 2024-2026 */
 /* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
@@ -39,6 +39,7 @@ public class ContinuousIntegrationInfoProviderResolver {
     def all () {
         def providers = continuousIntegrationInfoProviderServiceLoader.asList() + defaultProviders
         providers.each {
+            applyProviderFactory(it)
             applyEnvrionmentHelper(it)
         }
         return providers
@@ -46,16 +47,24 @@ public class ContinuousIntegrationInfoProviderResolver {
 
     ContinuousIntegrationInfoProvider findProvider(project) {
 
-        def provider = this.all().find { it.supports(project) }
+        def provider = this.all().find { it.supports() }
 
         if (provider) {
             LOGGER.info("Using provider " + provider.getClass())
         } else {
-            provider = new UnknownContinuousIntegrationProvider()
+            provider = new UnknownContinuousIntegrationProvider(providerFactory)
         }
 
+        applyProviderFactory(provider)
         applyEnvrionmentHelper(provider)
         return provider
+    }
+    
+    def applyProviderFactory(provider) {
+        if(provider.hasProperty("providerFactory") && provider.providerFactory == null) {
+            LOGGER.info("Setting provider factory on " + provider)
+            provider.providerFactory = this.providerFactory
+        }
     }
     
     def applyEnvrionmentHelper(provider) {

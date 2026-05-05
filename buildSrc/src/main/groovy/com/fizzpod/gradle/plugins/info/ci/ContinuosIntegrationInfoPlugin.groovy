@@ -1,4 +1,4 @@
-/* (C) 2024 */
+/* (C) 2024-2026 */
 /* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
@@ -46,10 +46,10 @@ public class ContinuousIntegrationInfoPlugin implements Plugin<Project> {
 		extension = project.extensions.create('ciinfo', ContinuousIntegrationInfoExtension)
 
 		def extMapping = ((IConventionAware) extension).getConventionMapping()
-		extMapping.host = { selectedProvider.calculateHost(project) }
-		extMapping.job = { selectedProvider.calculateJob(project) }
-		extMapping.buildNumber = { selectedProvider.calculateBuildNumber(project) }
-		extMapping.buildId = { selectedProvider.calculateBuildId(project) }
+		extMapping.host = { selectedProvider.host().getOrNull() }
+		extMapping.job = { selectedProvider.job().getOrNull() }
+		extMapping.buildNumber = { selectedProvider.buildNumber().getOrNull() }
+		extMapping.buildId = { selectedProvider.buildId().getOrNull() }
 
 		project.plugins.withType(InfoBrokerPlugin) { manifestPlugin ->
 			manifestPlugin.add(BUILD_HOST) { extension.host }
