@@ -1,44 +1,47 @@
-/* (C) 2024 */
+/* (C) 2024-2026 */
 /* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
 import nebula.plugin.info.ci.AbstractContinuousIntegrationProvider
-import org.gradle.api.Project
+import org.gradle.api.provider.Provider
 import org.gradle.api.provider.ProviderFactory
 
 class WerckerProvider extends AbstractContinuousIntegrationProvider {
 
+    protected ProviderFactory providerFactory
+
     WerckerProvider(ProviderFactory providerFactory) {
         super(providerFactory)
+        this.providerFactory = providerFactory
     }
 
     @Override
-    boolean supports(Project project) {
-        getEnvironmentVariable('WERCKER_ROOT')  != null
+    boolean supports() {
+        return providerFactory.environmentVariable('WERCKER_ROOT').getOrNull() != null
     }
 
     @Override
-    String calculateBuildNumber(Project project) {
-        getEnvironmentVariable('WERCKER_BUILD_ID')
+    Provider<String> buildNumber() {
+        return providerFactory.environmentVariable('WERCKER_BUILD_ID')
     }
 
     @Override
-    String calculateBuildId(Project project) {
-        getEnvironmentVariable('WERCKER_BUILD_ID')
+    Provider<String> buildId() {
+        return providerFactory.environmentVariable('WERCKER_BUILD_ID')
     }
 
     @Override
-    String calculateHost(Project project) {
-        getEnvironmentVariable('WERCKER_BUILD_URL')
+    Provider<String> host() {
+        return providerFactory.environmentVariable('WERCKER_BUILD_URL')
     }
 
     @Override
-    String calculateJob(Project project) {
-        getEnvironmentVariable('WERCKER_BUILD_ID')
+    Provider<String> job() {
+        return providerFactory.environmentVariable('WERCKER_BUILD_ID')
     }
 
     @Override
-    String calculateBuildUrl(Project project) {
-        return calculateHost(project)
+    Provider<String> buildUrl() {
+        return host()
     }
 }

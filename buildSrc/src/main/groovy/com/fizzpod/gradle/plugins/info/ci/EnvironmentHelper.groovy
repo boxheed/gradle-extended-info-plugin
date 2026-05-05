@@ -1,4 +1,4 @@
-/* (C) 2024 */
+/* (C) 2024-2026 */
 /* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info.ci
 
@@ -8,14 +8,15 @@ import org.gradle.api.provider.ProviderFactory
 
 class EnvironmentHelper extends UnknownContinuousIntegrationProvider {
 
+    protected ProviderFactory providerFactory
+
     EnvironmentHelper(ProviderFactory providerFactory) {
         super(providerFactory)
+        this.providerFactory = providerFactory
     }
 
     String getVariable(String key) {
-        return super.getEnvironmentVariable(key)
+        return providerFactory.environmentVariable(key).getOrNull()
     }
     
-
-
 }
