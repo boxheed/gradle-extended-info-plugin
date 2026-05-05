@@ -1,4 +1,4 @@
-/* (C) 2024-2025 */
+/* (C) 2024-2026 */
 /* SPDX-License-Identifier: Apache-2.0 */
 package com.fizzpod.gradle.plugins.info
 
@@ -46,7 +46,7 @@ public class InfoPlugin implements Plugin<Project> {
 		Date stop = new Date()
 
 		TimeDuration td = TimeCategory.minus( stop, start )
-		println "${plugin} ${td}"
+		//println "${plugin} ${td}"
 	}
 
 }
